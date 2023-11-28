@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm as useCustomForm } from 'react-hook-form';
 
 const useForm = (onSubmit, initialValues = {}) => {
   const {
@@ -6,7 +6,7 @@ const useForm = (onSubmit, initialValues = {}) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useCustomForm({
     defaultValues: initialValues,
   });
 

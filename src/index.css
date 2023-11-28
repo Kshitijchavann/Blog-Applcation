@@ -16,23 +16,28 @@ code {
   display: flex;
   align-items: stretch;
   font-family: 'Arial', sans-serif;
-  height: 100vh;
-  gap: 20px;
+  float: right;
+  width: 1250px;
 }
 
 .Task-Bar {
-  background-color:burlywood;
+  background-color: burlywood;
+  position: fixed;
   color: white;
   padding: 15px;
   text-align: center;
-  width: 20%;
+  width: 15%;
   box-sizing: border-box;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .Content {
   flex: 1;
   padding: 20px;
   box-sizing: border-box;
+  margin-left: 18%; 
 }
 
 .btn {

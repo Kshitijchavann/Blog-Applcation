@@ -8,8 +8,14 @@ export const getPosts = async (page, limit) => {
 };
 
 export const createPost = async (postData) => {
-  const response = await axios.post(API_URL, postData);
-  return response.data;
+  try {
+    const response = await axios.post(API_URL, postData);
+    console.log('Create Post Response:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating post:', error);
+    throw error;
+  }
 };
 
 export const updatePost = async (postId, postData) => {

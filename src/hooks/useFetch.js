@@ -9,10 +9,30 @@ const useFetch = (url) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
-      console.log('Response:', response.data);
+      console.log('API Response:', response.data);
       setData(response.data);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching data from API:', error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    console.log('Data:', data);
+    console.log('Loading:', loading);
+    console.log('Error:', error);
+  }, [data, loading, error]);
+
+  const refetch = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(url);
+      console.log('API Response (Refetch):', response.data);
+      setData(response.data);
+    } catch (error) {
+      console.error('Error refetching data from API:', error);
       setError(error);
     } finally {
       setLoading(false);
@@ -23,7 +43,7 @@ const useFetch = (url) => {
     fetchData();
   }, [url]);
 
-  return { data, loading, error, refetch: fetchData };
+  return { data, loading, error, refetch };
 };
 
 export default useFetch;
